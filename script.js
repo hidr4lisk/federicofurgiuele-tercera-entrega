@@ -107,12 +107,16 @@ function mostrarCarrito(filtrar = '') {
   productosAMostrar.forEach(producto => {
     const divProducto = document.createElement("div")
     divProducto.classList.add("producto")
+    // costo total por cantidad mismo producto
+    const costoTotal = producto.cantidad > 1 ? `Total: 💎${(producto.precio * producto.cantidad)}` : '';
+
 
     divProducto.innerHTML = `
       <img class="producto-imagen" src="${producto.imagen}" alt="${producto.nombre}">
       <h3>${producto.nombre} +${producto.mejora}</h3>
       <p>${producto.categoria}</p>
-      <p>💎${producto.precio}</p>
+      <p>Unidad:💎${producto.precio}</p>
+      ${costoTotal ? `<p>${costoTotal}</p>` : ''}
       <p>Cantidad en Carrito: ${producto.cantidad}</p>
       <div class="botones">
         <button class="btn-agregar click-shrink">+</button>
